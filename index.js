@@ -3,11 +3,13 @@ var instruments = document.querySelectorAll(".drum");
 for(var i = 0; i < instruments.length; i++) {
     instruments[i].addEventListener("click", function() {
         makeSound(this.innerHTML);
+        buttonAnimation(this.innerHTML);
     }); 
 }
 
 document.addEventListener("keydown", function (e) {
     makeSound(e.key);
+    buttonAnimation(e.key);
 });
 
 function makeSound(key) {
@@ -45,3 +47,14 @@ function makeSound(key) {
     }
 }
 
+function buttonAnimation(key) {
+
+    var activeButton = document.querySelector("." + key);
+
+    activeButton.classList.add("pressed");
+
+    setTimeout(function() { 
+        activeButton.classList.remove("pressed"); 
+    }, 100);
+
+}
